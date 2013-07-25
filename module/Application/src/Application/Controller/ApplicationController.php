@@ -11,28 +11,32 @@ namespace Application\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
-use Zend\Json\Json;
+use Application\Model;
 
-class ApplicationController extends AbstractActionController
-{
-    public function indexAction()
-    {
+class ApplicationController extends AbstractActionController {
+    private $vk;
+
+    public function indexAction() {
         return new ViewModel();
     }
 
-    public function selectHeaderAction()
-    {
-        $data = null;
-        if (true)
-        {
-            $data = array(
-                "username"      => "kazantip",
-                "image_path"    => "http://cs407222.vk.me/v407222980/a1d9/yRRu8eO5Vx0.jpg",
-            );
-        }
-
-        $json = Json::encode($data, true);
+    public function loginAction() {
+        $json = $this->getVkAuth()->authenticationUser();
         return $this->getResponse()->setContent($json);
     }
+
+    public function identifyAction() {
+        $json = $this->getVkAuth()->authenticationUser();
+        return $this->getResponse()->setContent($json);
+    }
+
+    private function getVkAuth() {
+        if (!$this->vk) {
+            $sm = $this->getServiceLocator();
+            $this->vk = $sm->get('Application\Model\VK_Auth');
+        }
+        return $this->vk;
+    }
+
 
 }

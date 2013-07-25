@@ -1,10 +1,40 @@
+html {
+    display: none;
+    min-width: 600px;
+}
+
 body {
     padding-top: 60px;
     padding-bottom: 40px;
 }
 
-#username {
+.navbar h2 {
+    width: 300px;
+    float: left;
+    font-family: Menlo;
+    color: #999999;
+    margin-left: 30px;
+}
+
+#user-header-panel {
     float: right;
-    margin-right: 15px;
+    padding: 5px;
+}
+
+#user-header-panel a {
+    margin-left: 20px;
+    margin-top: 3px;
+    text-decoration: none;
+    float: left;
+    color: black;
+}
+
+#user-header-panel img {
+    float: right;
+    margin-left: 20px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -khtml-border-radius: 5px;
 }
 

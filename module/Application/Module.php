@@ -9,9 +9,9 @@
 
 namespace Application;
 
+use Application\Model\VK_Auth;
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
-use Application\Model\UsersTable;
 
 class Module
 {
@@ -41,7 +41,18 @@ class Module
     public function getServiceConfig()
     {
         return array(
-
+            'factories' => array(
+                'ApplicationModelVK_Auth' =>  function($sm) {
+                    $vk = new VK_Auth();
+                    return $vk;
+                },
+//                'AlbumTableGateway' => function ($sm) {
+//                    $dbAdapter = $sm->get('ZendDbAdapterAdapter');
+//                    $resultSetPrototype = new ResultSet();
+//                    $resultSetPrototype->setArrayObjectPrototype(new Album());
+//                    return new TableGateway('album', $dbAdapter, null, $resultSetPrototype);
+//                },
+            ),
         );
     }
 

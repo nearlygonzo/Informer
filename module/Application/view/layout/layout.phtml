@@ -5,6 +5,7 @@
 <head>
 
     <meta charset="utf-8">
+
     <?php echo $this->headTitle() ?>
 
     <?php echo $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1.0') ?>
@@ -16,19 +17,19 @@
         ->prependStylesheet($this->basePath() . '/css/bootstrap.min.css') ?>
 
     <!-- Scripts -->
-    <?php echo $this->headScript()->prependFile($this->basePath() . '/js/html5.js', 'text/javascript', array('conditional' => 'lt IE 9',))
+    <?php echo $this->headScript()->prependFile( $this->basePath() . '/js/html5.js', 'text/javascript', array('conditional' => 'lt IE 9',))
         ->prependFile($this->basePath() . '/js/index_scripts.js')
         ->prependFile($this->basePath() . '/js/bootstrap.min.js')
-        ->prependFile($this->basePath() . '/js/jquery.min.js') ?>
+        ->prependFile($this->basePath() . '/js/jquery.min.js')?>
 
 
 </head>
 
 <body>
 
-<header class="navbar navbar-fixed-top">
-    <div class="navbar-inner" id="header">
-
+<header class="navbar navbar-fixed-top navbar-inner">
+    <h2>Informer beta</h2>
+    <div id="user-header-panel">
     </div>
 </header>
 <div class="container">

@@ -7,10 +7,20 @@
  */
 
 $(document).ready(function() {
-
-    $.getJSON('application/selectHeader', function(json) {
-        $('#header').append('<a href="#" id="username">' + json.username + '</a> <br/>')
+    $.getJSON('application/identify', function(json) {
+        if (json.url == null) {
+            $('#user-header-panel').append(
+                '<img src="' + json.image_path + '"> </img>' +
+                '<a href="#" id="username">' + json.username + '</a>' +
+                '<br/> <a href="#" id="logout">Выйти</a>'
+            );
+        } else {
+            $('#user-header-panel').append(
+                '<a href="' + json.url + '">' + 'Войти через vk.com</a>'
+            );
+        }
+        $('html').css("display", "block");
     })
-    .error(function() { alert("Ошибка выполнения"); })
+    .error(function() { alert("Ошибка выполнения."); })
 
 });

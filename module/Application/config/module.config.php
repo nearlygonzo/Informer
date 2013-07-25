@@ -62,7 +62,6 @@ return array(
         'template_map' => array(
             'application/index/index' => __DIR__ . '/../view/application/application/index.phtml',
             'layout/layout'           => __DIR__ . '/../view/layout/layout.phtml',
-            'layout/header_inactive'  => __DIR__ . '/../view/layout/header_inactive.phtml',
         ),
         'template_path_stack' => array(
             __DIR__ . '/../view',
