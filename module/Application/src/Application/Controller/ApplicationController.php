@@ -11,31 +11,34 @@ namespace Application\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
-use Application\Model;
+use Application\Model\VK_Auth\VKAuth;
+use Zend\ServiceManager\ServiceManager;
+use Zend\Json\Json;
 
 class ApplicationController extends AbstractActionController {
-    private $vk;
+    private $vk_auth;
 
     public function indexAction() {
         return new ViewModel();
     }
 
-    public function loginAction() {
-        $json = $this->getVkAuth()->authenticationUser();
-        return $this->getResponse()->setContent($json);
-    }
-
-    public function identifyAction() {
-        $json = $this->getVkAuth()->authenticationUser();
-        return $this->getResponse()->setContent($json);
-    }
-
-    private function getVkAuth() {
-        if (!$this->vk) {
-            $sm = $this->getServiceLocator();
-            $this->vk = $sm->get('Application\Model\VK_Auth');
+    public function authAction() {
+        if (!isset($_GET['code'])) {
+            $link = $this->getVKAuth()->getAuthorizeUrl(null, 'localhost/informer/public/');
+            $json = Json::encode(array("url" => $link), true);
+        } else {
+            $json = null;
         }
-        return $this->vk;
+        return $this->getResponse()->setContent($json);
+    }
+
+
+    private function getVKAuth() {
+        if ($this->vk_auth == null) {
+            $sm = $this->getServiceLocator();
+            $this->vk_auth = $sm->get('VK_Auth');
+        }
+        return $this->vk_auth;
     }
 
 

@@ -7,7 +7,7 @@
  */
 
 $(document).ready(function() {
-    $.getJSON('application/identify', function(json) {
+    $.getJSON('application/auth', function(json) {
         if (json.url == null) {
             $('#user-header-panel').append(
                 '<img src="' + json.image_path + '"> </img>' +
