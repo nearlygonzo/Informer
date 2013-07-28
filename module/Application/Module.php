@@ -37,8 +37,8 @@ class Module
     public function getServiceConfig() {
         return array(
             'factories' => array(
-                'VK_Auth' => function() {
-                    return new Model\VK_Auth\VKAuth('3782878', 'HfdvmPjUA4J6UidOCbo8');
+                'Auth' => function() {
+                    return new Model\Auth\Auth();
                 }
             )
         );

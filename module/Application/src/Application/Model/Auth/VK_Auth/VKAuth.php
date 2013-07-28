@@ -7,7 +7,7 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace Application\Model\VK_Auth;
+namespace Application\Model\Auth\VK_Auth;
 
 
 class VKAuth
